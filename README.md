@@ -51,16 +51,16 @@ A classe Main contém o método main que demonstra o algoritmo Flood Fill. Ela c
 ## Uso 
 Para instalar o site, siga os passos abaixo:
 
+</div>
+
 1. Clone o repositório para o seu computador:
 >```
 git clone https://github.com/seu-nome-de-usuário/flood-fill.git
-cd flood-fill
 > ```
 
 2. Compile e execute a classe Main:
 >```
 javac src/Main.java
-java src.Main
 >```
 
 3. Siga as instruções no console para interagir com o algoritmo Flood Fill e ver seus resultados.
