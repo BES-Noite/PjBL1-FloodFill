@@ -1,9 +1,6 @@
 package src;
 
-public class Pixel implements InterfacePixel{
-
-    // Estrutura do pixel, guarda as coordenadas
-    // e um int que representa a cor
+public class Pixel {
     private int posX;
     private int posY;
     private int color;
@@ -14,10 +11,7 @@ public class Pixel implements InterfacePixel{
         this.color = color;
     }
 
-    public static void PaintPixel(int[][] matrix, int posX, int posY) {
-
-        // Preenche o pixel e seus adjacentes por 2
-
+    public void PaintPixel(int[][] matrix, int posX, int posY) {
         matrix[posX][posY] = 2;
 
         if (checkBoundaries(posX + 1, posY) && matrix[posX + 1][posY] == 1) {
@@ -32,15 +26,10 @@ public class Pixel implements InterfacePixel{
         if (checkBoundaries(posX, posY - 1) && matrix[posX][posY - 1] == 1) {
             PaintPixel(matrix, posX, (posY - 1));
         }
-
     }
 
-    public static boolean checkBoundaries(int posX, int posY) {
-
-        // Verifica se o pixel está dentro da dimensão da matriz
-
+    public boolean checkBoundaries(int posX, int posY) {
         return (posX >= 0 && posX <= 9) && (posY >= 0 && posY <= 9);
-
     }
 
     public int getPosX() {

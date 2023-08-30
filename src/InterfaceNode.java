@@ -1,9 +1,10 @@
 package src;
 
 public interface InterfaceNode {
-    Node insertStack(Node linkedList, Pixel pixel);
-    Node popStack(Node linkedList);
-    void insertQueue(Node linkedList, Pixel pixel);
-    Node dequeueQueue(Node linkedList);
-    void showList(Node linkedList);
+    Node push(Pixel pixel);
+    Pixel pop();
+    void enqueue(Pixel pixel);
+    Pixel dequeue();
+    boolean isEmpty();
+    void showList();
 }
