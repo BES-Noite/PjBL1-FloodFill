@@ -1,5 +1,9 @@
 package src;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -40,32 +44,42 @@ public class Main {
             return;
         }
 
-        InterfaceNode dataStructure;
-
         if (useStack) {
-            dataStructure = new Node(); // Usa pilha
-        } else {
-            dataStructure = new Node(); // Usa fila
-        }
+            Stack<int[]> stack = new Stack<>();
+            stack.push(new int[]{startX, startY});
 
-        dataStructure.enqueue(new Pixel(startX, startY, originalColor));
-
-        while (!dataStructure.isEmpty()) {
-            Pixel currentPixel = dataStructure.dequeue();
-
-            if(currentPixel != null) {
-
-                int x = currentPixel.getPosX();
-                int y = currentPixel.getPosY();
+            while (!stack.isEmpty()) {
+                int[] currentPixel = stack.pop();
+                int x = currentPixel[0];
+                int y = currentPixel[1];
 
                 if (matrix[x][y] == originalColor) {
                     matrix[x][y] = newColor;
 
-                    // Adiciona vizinhos à pilha ou fila
-                    if (x + 1 < matrix.length) dataStructure.enqueue(new Pixel(x + 1, y, originalColor)); // Direita
-                    if (x - 1 >= 0) dataStructure.enqueue(new Pixel(x - 1, y, originalColor)); // Esquerda
-                    if (y + 1 < matrix[x].length) dataStructure.enqueue(new Pixel(x, y + 1, originalColor)); // Baixo
-                    if (y - 1 >= 0) dataStructure.enqueue(new Pixel(x, y - 1, originalColor)); // Cima
+                    // Adiciona vizinhos à pilha nas direções horizontais e verticais
+                    if (x + 1 < matrix.length) stack.push(new int[]{x + 1, y}); // Direita
+                    if (x - 1 >= 0) stack.push(new int[]{x - 1, y}); // Esquerda
+                    if (y + 1 < matrix[x].length) stack.push(new int[]{x, y + 1}); // Baixo
+                    if (y - 1 >= 0) stack.push(new int[]{x, y - 1}); // Cima
+                }
+            }
+        } else {
+            Queue<int[]> queue = new LinkedList<>();
+            queue.offer(new int[]{startX, startY});
+
+            while (!queue.isEmpty()) {
+                int[] currentPixel = queue.poll();
+                int x = currentPixel[0];
+                int y = currentPixel[1];
+
+                if (matrix[x][y] == originalColor) {
+                    matrix[x][y] = newColor;
+
+                    // Adiciona vizinhos à fila nas direções horizontais e verticais
+                    if (x + 1 < matrix.length) queue.offer(new int[]{x + 1, y}); // Direita
+                    if (x - 1 >= 0) queue.offer(new int[]{x - 1, y}); // Esquerda
+                    if (y + 1 < matrix[x].length) queue.offer(new int[]{x, y + 1}); // Baixo
+                    if (y - 1 >= 0) queue.offer(new int[]{x, y - 1}); // Cima
                 }
             }
         }
