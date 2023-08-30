@@ -1,91 +1,81 @@
 package src;
 
 public class Node implements InterfaceNode {
-    // Estrutura da lista, aponta para um próximo nó
-    // e guarda um Pixel
-
     private Node next = null;
     private Pixel pixel;
 
     public Node(Pixel pixel) {
-
-        // cria uma lista
         this.pixel = pixel;
     }
-    public Node() {
 
-        // cria uma lista
+    public Node() {
         pixel = null;
     }
 
-    public Node insertStack(Node linkedList, Pixel pixel) {
-        // Insere um pixel na primeira posição da lista (pilha)
-        if (linkedList.getPixel() == null) {
-            return linkedList = new Node(pixel);
-        }
-
+    @Override
+    public Node push(Pixel pixel) {
         Node newNode = new Node(pixel);
-        newNode.setNext(linkedList);
-        return newNode;
+        newNode.next = this;
+        return newNode; // Atualiza a referência para o novo nó
     }
-    public Node popStack(Node linkedList) {
-        if (linkedList == null) {
+
+    @Override
+    public Pixel pop() {
+        if (isEmpty()) {
             return null;
         }
 
-        Node poppedNode = linkedList;
-        linkedList = linkedList.getNext();
-        return poppedNode;
-    }
-
-
-    public void insertQueue(Node linkedList, Pixel pixel) {
-        Node newNode = new Node(pixel);
-
-        if (linkedList.getPixel() == null) {
-            linkedList.setPixel(pixel);
+        Pixel poppedPixel = this.pixel;
+        if (this.next != null) {
+            this.pixel = this.next.pixel;
+            this.next = this.next.next;
         } else {
-            Node head = linkedList;
-            while (head.getNext() != null) {
-                head = head.getNext();
+            this.pixel = null;
+        }
+        return poppedPixel;
+    }
+
+
+    @Override
+    public void enqueue(Pixel pixel) {
+        Node newNode = new Node(pixel);
+
+        if (this.pixel == null) {
+            this.pixel = pixel;
+        } else {
+            Node head = this;
+            while (head.next != null) {
+                head = head.next;
             }
-            head.setNext(newNode);
+            head.next = newNode;
         }
     }
-    public Node dequeueQueue(Node linkedList) {
-        if (linkedList == null) {
+
+    @Override
+    public Pixel dequeue() {
+        if (isEmpty()) {
             return null;
         }
 
-        Node dequeuedNode = linkedList;
-        linkedList = linkedList.getNext();
-        return dequeuedNode;
+        Pixel dequeuedPixel = this.pixel;
+        this.pixel = null;
+        return dequeuedPixel;
     }
 
-    public void showList(Node linkedList) {
 
-        // Mostra a lista no console
+    @Override
+    public boolean isEmpty() {
+        return this.pixel == null;
+    }
 
-        while (linkedList != null) {
+    @Override
+    public void showList() {
+        Node currentNode = this;
+
+        while (currentNode != null) {
             System.out.println(
-                    "X:" + linkedList.pixel.getPosX() + " Y:" + linkedList.pixel.getPosY() + " color:" + linkedList.pixel.getColor());
-            linkedList = linkedList.next;
+                    "X:" + currentNode.pixel.getPosX() + " Y:" + currentNode.pixel.getPosY() + " color:" + currentNode.pixel.getColor());
+            currentNode = currentNode.next;
         }
-    }
-
-    public Node getNext() {
-        return next;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
-    public Pixel getPixel() {
-        return pixel;
-    }
-
-    public void setPixel(Pixel pixel) {
-        this.pixel = pixel;
     }
 }
