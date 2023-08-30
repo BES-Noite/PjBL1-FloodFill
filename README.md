@@ -47,6 +47,7 @@ A classe Node representa um nó de lista encadeada que contém um objeto Pixel. 
 A classe Main contém o método main que demonstra o algoritmo Flood Fill. Ela cria instâncias das classes Pixel e Node e mostra como usar o algoritmo baseado em pilha para preencher pixels adjacentes.
 
 ## Funcionamento do projeto 
+![Screenshot 2023-08-30 at 19 38 20](https://github.com/BES-Noite/PjBL1-FloodFill/assets/118938358/d488e2d8-9d34-4162-8cb4-10059abc7ba0)
 
 ## Uso 
 Para utilizar o projeto, siga os passos abaixo:
