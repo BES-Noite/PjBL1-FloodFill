@@ -14,7 +14,7 @@
 ## FloodFill
 <br> 
 
-![image](https://github.com/BES-Noite/PjBL1-FloodFill/assets/91105011/2c94331d-6ca7-4deb-ae35-db59ca126ce0)
+![image](https://github.com/BES-Noite/PjBL1-FloodFill/assets/91105011/64d5db3c-e065-487d-a5d4-98a864afa66e)
 
 
 
@@ -24,3 +24,14 @@ de softwares de desenho (como paint) e pode ser utilizado também em jogos como 
 Minado para determinar quais posições serão limpas.
 A proposta desta atividade é a implementação do algoritmo Flood Fill de forma simplificada,
 utilizando Pilha e Fila para armazenamento dos pixels. 
+
+## Algoritmo FloodFill
+Este repositório contém uma implementação do algoritmo Flood Fill usando três classes e duas interfaces. As três classes são:
+
+Pixel: Representa um pixel com coordenadas e uma cor. Implementa InterfacePixel.
+Node: Representa um nó usado em listas encadeadas para armazenar objetos Pixel. Implementa InterfaceNode.
+Main: Contém o método principal para demonstrar o algoritmo Flood Fill.
+As duas interfaces são:
+
+InterfacePixel: Define métodos relacionados às propriedades do pixel.
+InterfaceNode: Define métodos para nós de listas encadeadas.
