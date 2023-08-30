@@ -28,26 +28,38 @@ public class Node implements InterfaceNode {
         newNode.setNext(linkedList);
         return newNode;
     }
+    public Node popStack(Node linkedList) {
+        if (linkedList == null) {
+            return null;
+        }
+
+        Node poppedNode = linkedList;
+        linkedList = linkedList.getNext();
+        return poppedNode;
+    }
+
 
     public void insertQueue(Node linkedList, Pixel pixel) {
-
-        // Insere um pixel na lista na próxima posição livre (Fila)
+        Node newNode = new Node(pixel);
 
         if (linkedList.getPixel() == null) {
             linkedList.setPixel(pixel);
-        }
-
-
-        //TODO aqui pode conter algum erro, revisar
-        else {
-            Node newNode = new Node(pixel);
+        } else {
             Node head = linkedList;
             while (head.getNext() != null) {
-                head.setNext(head.getNext());
+                head = head.getNext();
             }
             head.setNext(newNode);
         }
+    }
+    public Node dequeueQueue(Node linkedList) {
+        if (linkedList == null) {
+            return null;
+        }
 
+        Node dequeuedNode = linkedList;
+        linkedList = linkedList.getNext();
+        return dequeuedNode;
     }
 
     public void showList(Node linkedList) {
