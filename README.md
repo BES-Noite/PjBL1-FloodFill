@@ -28,10 +28,24 @@ utilizando Pilha e Fila para armazenamento dos pixels.
 ## Algoritmo FloodFill
 Este repositório contém uma implementação do algoritmo Flood Fill usando três classes e duas interfaces. As três classes são:
 
-Pixel: Representa um pixel com coordenadas e uma cor. Implementa InterfacePixel.
-Node: Representa um nó usado em listas encadeadas para armazenar objetos Pixel. Implementa InterfaceNode.
-Main: Contém o método principal para demonstrar o algoritmo Flood Fill.
-As duas interfaces são:
+* Pixel: Representa um pixel com coordenadas e uma cor. Implementa InterfacePixel. <br>
+* Node: Representa um nó usado em listas encadeadas para armazenar objetos Pixel. Implementa InterfaceNode. <br>
+* Main: Contém o método principal para demonstrar o algoritmo Flood Fill. <br>
+As duas interfaces são: <br>
 
-InterfacePixel: Define métodos relacionados às propriedades do pixel.
-InterfaceNode: Define métodos para nós de listas encadeadas.
+* InterfacePixel: Define métodos relacionados às propriedades do pixel. <br>
+* InterfaceNode: Define métodos para nós de listas encadeadas.
+
+## Implementação 
+### Classe Pixel 
+A classe Pixel representa um pixel com coordenadas e uma cor. Inclui métodos para pintar pixels adjacentes e verificar limites. <br>
+
+### Classe Node 
+A classe Node representa um nó de lista encadeada que contém um objeto Pixel. Ela fornece métodos para inserir e remover elementos da pilha, além de inserir e remover elementos da fila. Adicionalmente, possui um método para exibir a lista encadeada.
+
+### Main
+A classe Main contém o método main que demonstra o algoritmo Flood Fill. Ela cria instâncias das classes Pixel e Node e mostra como usar o algoritmo baseado em pilha para preencher pixels adjacentes.
+
+## Funcionamento do projeto 
+
+## Uso 
